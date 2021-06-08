@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="d-flex justify-content-between post-personal-block">
+        <div class="post-block">
+            {% include 'post/../partial/post/_post_partial.html' with post=post comments_class='comments_off' %}
+        </div>
+        <div class="post-comments-block">
+            <div class="post-comments" id="post-comments-{{ post.id }}">
+                {% for comment in post.comments.all %}
+                    {% include 'partial/comment/_comment.html' with comment=comment %}
+                {% empty %}
+                    <p class="no-comments">Комментарии отсутствуют ....</p>
+                {% endfor %}
+            </div>
+            {% if user.is_authenticated %}
+                {% include 'partial/comment/_add_comment.html' with id=post.id %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+<div class="comment">
+    <span>
+        <a href="{% url 'insta:profile' comment.creator.pk %}">{{ comment.creator.username }} </a>
+        <span class="comment-text">{{ comment.text }}</span>
+        <span class="comment-date">{{ comment.created_at |date:"d-m-Y H:i" }}</span>
+    </span>
+</div>

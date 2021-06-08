@@ -1,0 +1,324 @@
+body {
+    background-color: #fafafa;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+}
+
+.navbar {
+    background-color: white !important;
+    border-bottom: 1px solid silver;
+}
+
+.navbar-brand {
+    width: 10%;
+}
+
+.menu {
+    list-style: none;
+    display: inline-block;
+}
+
+.menu-right {
+    display: inline-block;
+}
+
+.nav-link {
+    font-size: 20px;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+}
+
+.counter {
+    padding: 0;
+}
+
+.profile, .counters, .full-name {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.full-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.followers {
+    font-size: 10px;
+}
+
+.profile-post {
+    width: 350px;
+    position: relative;
+    overflow: hidden;
+    height: 350px;
+    margin-bottom: 30px;
+
+}
+
+.posts a {
+    color: white;
+}
+
+.counters a {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.post-counters {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color: aliceblue;
+}
+
+.post-counters-links {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+}
+
+.post-link {
+    margin: 0 10px;
+}
+
+.profile-post:hover .post-counters {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.post {
+    margin: 15px auto;
+    width: 70%;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    background-color: white;
+
+}
+
+.post-footer {
+    padding: 15px;
+}
+
+.media .post-link {
+    margin: 0;
+    width: 100%;
+}
+
+.post-footer .title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.post-footer-link, .post-heading .profile-link {
+    color: #343a40;
+}
+
+.profile-link img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.post-footer-link:hover {
+    color: black;
+}
+
+.post-heading .profile-link:hover {
+    color: black;
+}
+
+.profile-link .avatar {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid silver;
+}
+
+.username {
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.post-heading {
+    padding: 15px;
+}
+
+.comments_on {
+    display: block;
+}
+
+.comments_off {
+    display: none;
+}
+
+.post-comments-block {
+    padding: 15px;
+    margin: 15px 0;
+    background-color: #fff;
+    width: 35%;
+    border: 1px solid #dedede;
+    position: relative;
+}
+
+.post-comments {
+    overflow-y: scroll;
+    max-height: 600px;
+}
+
+.post-block {
+    width: 65%;
+}
+
+.post-block .post {
+    width: 100%;
+}
+
+.user-search-block {
+    position: relative;
+}
+
+.users .user {
+    padding: 5px;
+    border-bottom: 1px solid silver;
+}
+
+.user .search-avatar {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.counters {
+    position: relative;
+}
+
+.users {
+    position: absolute;
+    left: 50%;
+    margin-left: -175px;
+    width: 350px;
+    height: 400px;
+    background-color: white;
+    z-index: 1;
+    border: 1px solid #dedede;
+    border-top: none;
+    padding: 15px 15px 0;
+    overflow-y: scroll;
+}
+
+#users {
+    width: 380px;
+    display: none;
+    max-height: 350px;
+    position: absolute;
+    left: 50%;
+    margin-left: -175px;
+    bottom: -75px;
+    border-radius: 5px;
+}
+
+.user .name_last-name {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+.user a {
+    width: 100%;
+    color: #343a40;
+    display: inline-block;
+}
+
+.profile-avatar {
+    padding: 40px;
+    font-size: 55px;
+}
+
+.avatar {
+    padding: 5px;
+    border-radius: 50%;
+    height: 245px;
+    width: 245px;
+}
+
+.user .search-avatar .fa-linux {
+    font-size: 25px;
+}
+
+.comments {
+    position: relative;
+}
+
+.new-comment-form {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.comment {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.new-comment-form input {
+    width: 100%;
+    border: 1px solid lightslategray;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.comments {
+    padding-bottom: 45px;
+    max-height: 170px;
+    overflow: hidden;
+}
+
+.comment-date {
+    font-size: 12px;
+    color: silver;
+}
+
+.current_avatar img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.current_avatar {
+    padding: 10px;
+}
+
+.edit-form form {
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 650px;
+    border: 1px solid silver;
+    margin-top: 20px;
+}
+
+.form-error {
+    color: red;
+}
+
+.delete {
+    cursor: pointer;
+}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+   {% for post in posts %}
+        {% include 'partial/post/_post_partial.html' with post=post comments_class='comments_on'%}
+   {% empty %}
+        <p class="text-center">Публикации отсутствуют, подпишитесь на пользователей что бы просматривать публикации</p>
+   {% endfor %}
+
+{% endblock %}

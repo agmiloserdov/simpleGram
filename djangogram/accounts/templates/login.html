@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="form-block d-flex justify-content-center">
+        <div class="register-form">
+            <form action="{% url 'accounts:login' %}?next={{ next }}" method="post">
+                {% csrf_token %}
+                {% if has_error %}
+                    <p class="form-text text-danger">Логин или пароль некорректны</p>
+                {% endif %}
+                <div class="form-group">
+                    <label for="username">Логин</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-dark fa fa-sign-in"> Войти</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

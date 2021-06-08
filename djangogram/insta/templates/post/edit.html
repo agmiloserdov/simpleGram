@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="form-block d-flex justify-content-center edit-form">
+        <div>
+            <h5 class="text-center mt-2" id="post_modalLabel">Редактирование</h5>
+            {% url 'insta:edit' post.pk as action %}
+            {% include 'partial/_form.html' with form_method='POST' form_action=action form_enctype='multipart/form-data' button_text='Изменить' %}
+        </div>
+    </div>
+{% endblock %}

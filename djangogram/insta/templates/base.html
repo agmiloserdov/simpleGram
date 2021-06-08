@@ -1,0 +1,60 @@
+<!doctype html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Djangogram{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css"
+          rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'insta:index' %}"><img src="{% static 'images/logo.png' %}"
+                                                                    alt="djangogram"></a>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Поиск пользователей" aria-label="Search"
+                   id="search-field">
+        </form>
+        <ul class="menu">
+            {% if user.is_authenticated %}
+                {% block menu_links %}{% endblock %}
+                <li class="menu-right"><a id="logout" href="{% url 'accounts:logout' %}?next={{ request.get_full_path }}"
+                                          class="nav-link btn-outline-dark"><i class="fa fa-sign-out"></i></a></li>
+                <li class="menu-right"><a id="profile" href="{% url 'insta:profile' user.pk %}"
+                                          class="nav-link btn-outline-dark fa fa-user"></a></li>
+            {% else %}
+                <li class="menu-right"><a href="{% url 'accounts:login' %}?next={{ request.get_full_path }}"
+                                          class="nav-link btn-outline-dark"><i class="fa fa-sign-in"></i></a></li>
+                <li class="menu-right"><a href="{% url 'accounts:register' %}?next={{ request.get_full_path }}"
+                                          class="nav-link btn-outline-dark"><i class="fa fa-user-plus"></i></a></li>
+            {% endif %}
+            {% block menu %}{% endblock %}
+        </ul>
+    </div>
+</nav>
+<div class="user-search-block" id="search-results">
+
+</div>
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+
+<script src="{% static 'js/main.js' %}"></script>
+{% block scripts %}{% endblock scripts %}
+</body>
+</html>

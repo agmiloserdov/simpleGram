@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="form-block d-flex justify-content-center">
+        <div class="register-form">
+            {% url 'accounts:register' as action%}
+            {% include 'partial/_form.html' with form_action=action button_text="Зарегистрироваться" form_method='POST' %}
+        </div>
+    </div>
+{% endblock %}

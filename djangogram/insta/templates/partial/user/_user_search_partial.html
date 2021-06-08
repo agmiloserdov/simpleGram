@@ -1,0 +1,21 @@
+<div class="users">
+    {% for user in users %}
+        <div class="user">
+            <a href="{% url 'insta:profile' user.pk %}">
+                <span class="search-avatar">
+                    {% if user.profile.avatar %}
+                        <img src="{{ user.profile.avatar.url }}" alt="">
+                    {% else %}
+                        <i class="fa fa-linux"></i>
+                    {% endif %}
+                </span>
+                <span class="username" id="{{ user.username }}">{{ user.username }}</span>
+                <p class="name_last-name">
+                    {{ user.first_name }} {{ user.last_name }}
+                </p>
+            </a>
+        </div>
+    {% empty %}
+        <p class="form-text">Поиск не дал результатов</p>
+    {% endfor %}
+</div>
