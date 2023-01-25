@@ -27,7 +27,7 @@ SECRET_KEY = '1@o=oq%!&7khdf_c1#c@9xa!4pgq!$g)k#!b9ki(pz3f%y=on#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0']
 
 # Application definition
 
@@ -85,7 +85,7 @@ DATABASES = {
         "NAME": "djangogram_db",
         "USER": "postgres",
         "PASSWORD": "postgres",
-        "HOST": "db",
+        "HOST": os.environ.get('DB_HOST', 'db_host'),
         "PORT": 5432,
         "TEST": {
             "NAME": str(uuid.uuid4()),
@@ -129,6 +129,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/uploads/'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'login'
