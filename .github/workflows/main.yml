@@ -30,6 +30,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
+            ls -la
             echo ${{ secrets.REMOTE_FOLDER }}
             docker volume create --name=logs
             docker volume create --name=media
