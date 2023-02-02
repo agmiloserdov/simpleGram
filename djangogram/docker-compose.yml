@@ -22,7 +22,8 @@ services:
     command: bash -c 'python manage.py migrate --noinput && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000'
     volumes:
       - web_volume:/home/app/web
-      - media:/home/app/web/uploads
+      - media:/home/app/web/media
+      - static:/home/app/web/static
       - logs:/home/app/web/logs:rw
     ports:
       - "8000:8000"
@@ -36,6 +37,8 @@ services:
 volumes:
   postgresql_data:
   media:
+    external: true
+  static:
     external: true
   logs:
     external: true
