@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+    <h1 class="center-block">Для входа введите логин и пароль</h1>
     <div class="form-block d-flex justify-content-center">
         <div class="register-form">
             <form action="{% url 'accounts:login' %}?next={{ next }}" method="post">
