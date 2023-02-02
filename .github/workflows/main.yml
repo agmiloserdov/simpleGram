@@ -1,17 +1,19 @@
 name: "Django deploy workflow"
 
 on:
-  pull_request:
-    types: [ closed ]
+  push:
     branches:
       - master
 
 jobs:
   deploy-job:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Install ssh key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: 'any_host'
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.2
         with:
@@ -20,21 +22,23 @@ jobs:
           remote_host: ${{ secrets.SSH_HOST }}
           remote_user: ${{ secrets.SSH_USER }}
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        - name: clone repo and create environment
-          uses: appleboy/ssh-action@master
-          with:
-            host: ${{ secrets.SSH_HOST }}
-            username: ${{ secrets.SSH_USER }}
-            key: ${{ secrets.SSH_PRIVATE_KEY }}
-            port: 22
-            script: |
-              python3 pip install --upgrade pip
-              docker volume create --name=logs
-              docker volume create --name=media
-              cd djangogram
-              mkdir -p logs
-              mkdir -p media
-              docker-compose build
-              docker-compose up -d
-              systemctl restart nginx
-              exit
+      - name: clone repo and create environment
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            python3 pip install --upgrade pip
+            docker volume create --name=logs
+            docker volume create --name=media
+            docker volume create --name=static
+            cd djangogram
+            mkdir -p logs
+            mkdir -p media
+            mkdir -p static
+            docker-compose build
+            docker-compose up -d
+            systemctl restart nginx
+            exit
