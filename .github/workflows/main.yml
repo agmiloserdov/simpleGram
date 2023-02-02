@@ -30,10 +30,10 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            python3 pip install --upgrade pip
             docker volume create --name=logs
             docker volume create --name=media
             docker volume create --name=static
+            ls -a
             pwd
             cd djangogram
             pwd
