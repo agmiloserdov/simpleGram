@@ -16,7 +16,6 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: 'any_host'
-      - uses: actions/checkout@v2
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.2
         with:
@@ -28,20 +27,20 @@ jobs:
       - name: clone repo and create environment
         uses: appleboy/ssh-action@master
         with:
-            host: ${{ secrets.SSH_HOST }}
-            username: ${{ secrets.SSH_USER }}
-            key: ${{ secrets.SSH_PRIVATE_KEY }}
-            port: 22
-            script: |
-              python3 pip install --upgrade pip
-              docker volume create --name=logs
-              docker volume create --name=media
-              docker volume create --name=static
-              cd djangogram
-              mkdir -p logs
-              mkdir -p media
-              mkdir -p static
-              docker-compose build
-              docker-compose up -d
-              systemctl restart nginx
-              exit
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            python3 pip install --upgrade pip
+            docker volume create --name=logs
+            docker volume create --name=media
+            docker volume create --name=static
+            cd djangogram
+            mkdir -p logs
+            mkdir -p media
+            mkdir -p static
+            docker-compose build
+            docker-compose up -d
+            systemctl restart nginx
+            exit
